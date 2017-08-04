@@ -18,23 +18,16 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("test")
-    public String Test(){
-
-        return "index.jsp";
-    }
-
-
-    @RequestMapping("/hello")
-    public String  FindOne(){
-        return userService.findOne(1).toString();
+    @RequestMapping("/find/{id}")
+    public String  FindOne(@PathVariable("id") Integer id){
+        return userService.findOne(id).toString();
     }
 
     @RequestMapping("/login")
-    public String  Login(@RequestParam("loginname") String loginname,@RequestParam("password") String password) throws Exception{
+    public String  Login(@RequestParam("account") String account,@RequestParam("password") String password) throws Exception{
 
-        User user=userService.findUserByLoginName(loginname);
-        if(loginname==null){
+        User user=userService.findUserByAccount(account);
+        if(account==null){
 
             return "1";
         }else if(!user.getPassword().equals(password)){

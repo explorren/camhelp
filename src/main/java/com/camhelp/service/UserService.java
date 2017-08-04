@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 public interface UserService {
      User findOne(Integer id);
      void SaveUser(User user);
-     User findUserByLoginName(String loginName);
+     User findUserByAccount(String account);
      User findUserByNickname(String nickName);
      void updatePasswordById(String password,int Id);
 }

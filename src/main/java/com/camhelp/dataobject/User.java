@@ -15,23 +15,33 @@ import javax.persistence.Id;
 public class User {
         @Id
         @GeneratedValue
+        /**用户id*/
         private Integer userID;
-
-        private String loginName;
-
+        /**账号*/
+        private String account;
+        /**密码*/
         private String password;
-
-        private String nickname;
-
+        /**昵称
+         * 0-男，1-女,-1-保密*/
+        private Integer nickname;
+        /**性别*/
         private String sex;
-
+        /**个人简介*/
         private String intro;
-
+        /**个人头像地址*/
         private String avatar;
-
+        /**用户电话*/
+        private String telephone;
+        /**邮箱*/
+        private String email;
+        /**地址
+         * 利用_进行拼接*/
+        private String address;
+        /**生日
+         * 暂采用String*/
+        private String birthday;
+        /**用户角色*/
         private Integer roleID;
-
-        private String phone;
 
         public void User(){
 

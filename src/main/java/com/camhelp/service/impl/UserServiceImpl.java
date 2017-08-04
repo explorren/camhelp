@@ -27,14 +27,14 @@ public class UserServiceImpl implements UserService{
     @Transactional
     @Override
     public void SaveUser(User user){
-        if(userRepository.findByLoginName(user.getLoginName())==null) {
+        if(userRepository.findByAccount(user.getAccount())==null) {
             userRepository.save(user);
         }
     }
     @Transactional
     @Override
-    public User findUserByLoginName(String loginname){
-        return userRepository.findByLoginName(loginname);
+    public User findUserByAccount(String account){
+        return userRepository.findByAccount(account);
     }
     @Transactional
     @Override

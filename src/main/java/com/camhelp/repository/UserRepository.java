@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.Query;
  * Created by Jupiter on 2017/7/22.
  */
 public interface UserRepository  extends JpaRepository<User,Integer>{
-         public User findByLoginName(String loginName);
+         public User findByAccount(String account);
          public User findByNickname(String nickName);
 
     /**

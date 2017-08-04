@@ -3,6 +3,8 @@ package com.camhelp.controller;
 /**
  * Created by Jupiter on 2017/8/2.
  */
+import com.camhelp.utils.DateConvertUtils;
+import com.camhelp.utils.UploadFileUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +15,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -58,50 +61,10 @@ public class FileController {
 
     //多文件上传
     @RequestMapping(value = "/batch/upload", method = RequestMethod.POST)
-    public String handleFileUpload(HttpServletRequest request) {
-        List<MultipartFile> files = ((MultipartHttpServletRequest) request)
-                .getFiles("file");
-        MultipartFile file = null;
-        BufferedOutputStream stream = null;
-        for (int i = 0; i < files.size(); ++i) {
-            file = files.get(i);
+    public String handleFileUpload(@RequestParam("files") List<MultipartFile> files) {
 
-
-            if (!file.isEmpty()) {
-                try {
-                    byte[] bytes = file.getBytes();
-                    stream = new BufferedOutputStream(new FileOutputStream(
-                            new File(file.getOriginalFilename())));
-                    stream.write(bytes);
-                    stream.close();
-
-                } catch (Exception e) {
-                    stream = null;
-                    return "You failed to upload " + i + " => "
-                            + e.getMessage();
-                }
-            } else {
-                return "You failed to upload " + i
-                        + " because the file was empty.";
-            }
-
-            String filePath = "E://test//";
-            File dest = new File(filePath + "testttt"+i+".jpg");
-            if (!dest.getParentFile().exists()) {
-                dest.getParentFile().mkdirs();
-            }
-
-            try {
-                file.transferTo(dest);
-
-            } catch (IllegalStateException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        return "upload successful";
+        List<String> list=UploadFileUtils.uploadFile(files,"file//");
+        return list.toString();
     }
 
 }
