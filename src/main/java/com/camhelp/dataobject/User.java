@@ -1,5 +1,7 @@
 package com.camhelp.dataobject;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -12,6 +14,7 @@ import javax.persistence.Id;
 
 @Entity
 @Data
+
 public class User {
         @Id
         @GeneratedValue
@@ -23,9 +26,9 @@ public class User {
         private String password;
         /**昵称
          * 0-男，1-女,-1-保密*/
-        private Integer nickname;
+        private String nickname;
         /**性别*/
-        private String sex;
+        private Integer sex;
         /**个人简介*/
         private String intro;
         /**个人头像地址*/

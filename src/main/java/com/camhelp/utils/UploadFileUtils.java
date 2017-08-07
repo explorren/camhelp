@@ -19,7 +19,8 @@ public class UploadFileUtils {
         MultipartFile file = null;
         BufferedOutputStream stream = null;
 
-        String filePath = "E://test//"+filepathpart;
+       // String filePath = "C:\\database\\apache-tomcat-8.5.14\\webapps\\camhelp"+filepathpart+"\\";
+        String filePath="E://test//"+filepathpart+"//";
         String newfilePath;
 
         List<String> list=new ArrayList<>();

@@ -9,6 +9,8 @@ import org.springframework.boot.autoconfigure.web.MultipartProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.DispatcherServlet;
@@ -17,7 +19,14 @@ import javax.servlet.MultipartConfigElement;
 import javax.servlet.Servlet;
 
 @SpringBootApplication
+@RestController
 public class CamhelpApplication {
+
+	@RequestMapping("/")
+	public String Hello(){
+
+		return "hello";
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(CamhelpApplication.class, args);
